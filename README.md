@@ -4,7 +4,8 @@ hokum83 Infra repository
 # ДЗ-3
 
 ## Адреса ВМ
-bastion_IP = 51.250.91.111 \
+bastion_IP = 51.250.91.111
+\
 someinternalhost_IP = 10.128.0.6
 
 ### Доп. задание - Подключение через **ssh someinternalhost**
