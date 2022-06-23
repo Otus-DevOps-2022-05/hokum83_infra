@@ -14,6 +14,7 @@ testapp_port = 9292
 - deploy.sh
 
 ### Доп. задание - создание startup script
+**Как решить отдельным скриптом .sh и передачей его ВМ не понял и не нашел. Прошу пояснить.**
 Задача выполнена через дополнительный файл cloud-config.yaml:
 ```
 #cloud-config
@@ -50,7 +51,7 @@ yc compute instance create  \
   --metadata-from-file user-data=./cloud-config.yaml
 ```
 
-Как решить отдельным скриптом .sh и передачей его ВМ не понял и не нашел. Прошу пояснить.
+
 
 
 # ДЗ-3
