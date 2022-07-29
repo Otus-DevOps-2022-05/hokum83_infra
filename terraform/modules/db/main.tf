@@ -1,7 +1,7 @@
 resource "yandex_compute_instance" "db" {
   name = "reddit-db"
   labels = {
-    tags = "reddit-db"
+    tags = "db"
   }
 
   resources {
@@ -30,10 +30,10 @@ resource "yandex_compute_instance" "db" {
     agent       = false
     private_key = file(var.private_key_path)
   }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo sed -i 's/127.0.0.1//g' /etc/mongodb.conf",
-      "sudo systemctl restart mongodb",
-    ]
-  }
+#  provisioner "remote-exec" {
+#    inline = [
+#      "sudo sed -i 's/127.0.0.1//g' /etc/mongodb.conf",
+#      "sudo systemctl restart mongodb",
+#    ]
+#  }
 }
