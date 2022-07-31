@@ -16,11 +16,7 @@
     "provisioners": [
         {
             "type": "ansible",
-            "playbook_file": "ansible/packer_db.yml",
-            "extra_arguments": [
-                "--ssh-extra-args",
-                "-o IdentitiesOnly=yes"
-            ]
+            "playbook_file": "ansible/playbooks/packer_db.yml"
         }
     ]
 }
