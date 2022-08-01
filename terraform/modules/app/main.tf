@@ -2,7 +2,7 @@ resource "yandex_compute_instance" "app" {
   name = "reddit-app"
 
   labels = {
-    tags = "reddit-app"
+    tags = "app"
   }
   resources {
     cores  = 2
@@ -35,19 +35,19 @@ resource "yandex_compute_instance" "app" {
   }
 
 
-  provisioner "file" {
-    source      = "../modules/app/puma.service"
-    destination = "/tmp/puma.service"
-  }
-  provisioner "file" {
-    source      = "../modules/app/deploy.sh"
-    destination = "/tmp/deploy.sh"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo sh -c \"echo 'export DATABASE_URL=${var.db_ip_address}:27017' >> /etc/profile\"",
-      "bash /tmp/deploy.sh",
-    ]
-  }
+#  provisioner "file" {
+#    source      = "../modules/app/puma.service"
+#    destination = "/tmp/puma.service"
+#  }
+#  provisioner "file" {
+#    source      = "../modules/app/deploy.sh"
+#    destination = "/tmp/deploy.sh"
+#  }
+#
+#  provisioner "remote-exec" {
+#    inline = [
+#      "sudo sh -c \"echo 'export DATABASE_URL=${var.db_ip_address}:27017' >> /etc/profile\"",
+#      "bash /tmp/deploy.sh",
+#    ]
+#  }
 }
