@@ -1,0 +1,33 @@
+---
+plugin: yc_compute
+folders:  # List inventory hosts from these folders.
+  - b1gm9dfdv1ovp04bm4l6
+filters:
+  - status == 'RUNNING'
+#  - labels['role'] == 'db'
+auth_kind: serviceaccountfile
+service_account_file: ../../secrets/terraform_key.json
+hostnames:
+  - fqdn  # Use FQDN for inventory hostnames.
+# You can also format hostnames with jinja2 expressions like this
+# - "{{id}}_{{name}}"
+
+compose:
+  # Set ansible_host to the Public IP address to connect to the host.
+  # For Private IP use "network_interfaces[0].primary_v4_address.address".
+  ansible_host: network_interfaces[0].primary_v4_address.one_to_one_nat.address
+
+keyed_groups:
+  # Place hosts in groups named by folder_id.
+  #- key: folder_id
+  # prefix: ''
+  # separator: ''
+  # Place hosts in groups named by value of labels['group'].
+  - key: labels['tags']
+    prefix: ''
+    separator: ''
+
+#groups:
+#  Place hosts in 'ssd' group if they have appropriate disk_type label.
+#  app: labels['tags'] == 'reddit-app'
+#  db: labels['tags'] == 'reddit-db'

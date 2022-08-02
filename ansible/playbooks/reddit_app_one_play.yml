@@ -8,7 +8,7 @@
    - name: Change mongo config file
      become: true
      template:
-       src: templates/mongod.conf.j2
+       src: old/templates/mongod.conf.j2
        dest: /etc/mongodb.conf
        mode: 0644
      notify: restart mongod
@@ -17,14 +17,14 @@
    - name: Add unit file for Puma
      become: true
      copy:
-       src: files/puma.service
+       src: old/files/puma.service
        dest: /etc/systemd/system/puma.service
      tags: app-tag
      notify: reload puma
 
    - name: Add config for DB connection
      template:
-       src: templates/db_config.j2
+       src: old/templates/db_config.j2
        dest: /home/ubuntu/db_config
      tags: app-tag
 
