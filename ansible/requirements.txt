@@ -1,3 +1,4 @@
-pip install -r requirements.txt
-pip install ansible>=2.4
-easy_install `cat requirements.txt`
+ansible>=2.4
+molecule==2.22
+testinfra>=1.10
+python-vagrant>=0.5.15

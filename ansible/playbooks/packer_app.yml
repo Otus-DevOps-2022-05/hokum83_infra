@@ -2,15 +2,5 @@
 - name: Install & Start Ruby
   hosts: all
   become: true
-  tasks:
-  - name: remove files
-    file:  "path={{ item }} state=absent"
-    with_items:
-      - /var/lib/dpkg/lock-frontend
-      - /var/lib/dpkg/lock
-  - name: install packages
-    apt:
-      name:
-        - ruby-full
-        - ruby-bundler
-        - build-essential
+  roles:
+  - app

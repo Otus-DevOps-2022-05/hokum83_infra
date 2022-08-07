@@ -1,2 +1,11 @@
 packer/files/variables.json
 /jdauphant.nginx/
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
+venv
+Pipfile

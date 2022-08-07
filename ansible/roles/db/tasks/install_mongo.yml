@@ -1,0 +1,19 @@
+- name: remove files
+  file:  "path={{ item }} state=absent"
+  with_items:
+    - /var/lib/dpkg/lock-frontend
+    - /var/lib/dpkg/lock
+  tags: install
+
+- name: install packages
+  apt:
+    name: mongodb-server
+    state: present
+  tags: install
+
+- name: Configure service supervisor
+  systemd:
+    name: mongodb
+    enabled: yes
+    state: started
+  tags: install
